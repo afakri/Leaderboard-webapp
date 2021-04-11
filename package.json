@@ -1,0 +1,22 @@
+{
+  "name": "projet-coding_god",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/professor-forward/projet-coding_god.git"
+  },
+  "author": "Ayman Fakri",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/professor-forward/projet-coding_god/issues"
+  },
+  "homepage": "https://github.com/professor-forward/projet-coding_god#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
