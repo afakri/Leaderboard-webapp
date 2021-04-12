@@ -216,7 +216,7 @@ function scoreTable(events, scoreTables) {
 // Getter for the competitions
 async function getCompetitions() {
     try {
-        const result = await fetch(`http://localhost:8080/api/competitions`, { method: "GET" })
+        const result = await fetch(`http://localhost:8081/api/competitions`, { method: "GET" })
         const comps = await result.json();
         return comps
     } catch (error) {
@@ -231,7 +231,7 @@ async function getCompetitions() {
 //Getter for the events
 async function getEvents(comp_name) {
     try {
-        const result = await fetch(`http://localhost:8080/api/events/${comp_name}`, { method: "GET" })
+        const result = await fetch(`http://localhost:8081/api/events/${comp_name}`, { method: "GET" })
         const events = await result.json();
         return events
     } catch (error) {
@@ -242,7 +242,7 @@ async function getEvents(comp_name) {
 //Getter for the scores data
 async function getScores(event_name, comp_name) {
     try {
-        const result = await fetch(`http://localhost:8080/scores/competition/${comp_name}/event/${event_name}`, { method: "GET" })
+        const result = await fetch(`http://localhost:8081/scores/competition/${comp_name}/event/${event_name}`, { method: "GET" })
         const scores = await result.json();
         return scores
     } catch (error) {
