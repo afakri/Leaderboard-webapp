@@ -9,8 +9,10 @@ const port = process.env.PORT || 8080
 
 
 
-app.get("/", (req, res) => res.sendFile('static/index.html', { root: __dirname }))
-
+app.get("/", async(req, res) =>{
+	res.sendFile('static/index.html', { root: __dirname })
+	
+})
 app.get("/api/:data", async(req, res) => {
     try {
         const rows = await getData(req.params.data, res)

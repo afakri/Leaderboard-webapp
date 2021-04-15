@@ -1,7 +1,29 @@
 let dropdownBtn = document.querySelector('.menu-btn');
 let menuContent = document.querySelector('.menu-content');
 let menuItems = document.getElementsByClassName('links')
+window.addEventListener('scroll', () => {
+    const nav = document.getElementsByClassName("navbar")[0];
+    const items = document.getElementsByTagName("h4");
 
+    const button = document.getElementsByTagName("button")[0];
+    const scrolled = window.scrollY;
+    if (scrolled > 0) {
+        button.classList.add("newbutton")
+        items[0].classList.add("newli")
+        items[1].classList.add("newli")
+        items[2].classList.add("newli")
+        items[3].classList.add("newli")
+        nav.classList.add("sticky")
+    } else {
+        button.classList.remove("newbutton")
+        nav.classList.remove("sticky")
+        items[0].classList.remove("newli")
+        items[1].classList.remove("newli")
+        items[2].classList.remove("newli")
+        items[3].classList.remove("newli")
+    }
+
+});
 
 // competition button drop-down
 dropdownBtn.addEventListener('click', () => {
@@ -13,7 +35,7 @@ dropdownBtn.addEventListener('click', () => {
 })
 
 const comp_names = []
-const competitions = await getCompetitions()
+const competitions = await getCompetitions();
 
 //replacing "_" with spaces
 competitions.forEach(comp => {
@@ -129,30 +151,6 @@ async function tableMaker(comp_name, events) {
 
 }
 
-//Navigation bar scroll animation
-window.addEventListener('scroll', () => {
-    const nav = document.getElementsByClassName("navbar")[0];
-    const items = document.getElementsByTagName("h4");
-
-    const button = document.getElementsByTagName("button")[0];
-    const scrolled = window.scrollY;
-    if (scrolled > 0) {
-        button.classList.add("newbutton")
-        items[0].classList.add("newli")
-        items[1].classList.add("newli")
-        items[2].classList.add("newli")
-        items[3].classList.add("newli")
-        nav.classList.add("sticky")
-    } else {
-        button.classList.remove("newbutton")
-        nav.classList.remove("sticky")
-        items[0].classList.remove("newli")
-        items[1].classList.remove("newli")
-        items[2].classList.remove("newli")
-        items[3].classList.remove("newli")
-    }
-
-});
 
 //makes the table from the events and the scores
 function scoreTable(events, scoreTables) {
@@ -216,7 +214,7 @@ function scoreTable(events, scoreTables) {
 // Getter for the competitions
 async function getCompetitions() {
     try {
-        const result = await fetch(`http://localhost:8081/api/competitions`, { method: "GET" })
+        const result = await fetch(`http://leaderboard-project.xyz/api/competitions`, { method: "GET" })
         const comps = await result.json();
         return comps
     } catch (error) {
@@ -231,7 +229,7 @@ async function getCompetitions() {
 //Getter for the events
 async function getEvents(comp_name) {
     try {
-        const result = await fetch(`http://localhost:8081/api/events/${comp_name}`, { method: "GET" })
+        const result = await fetch(`http://leaderboard-project.xyz/api/events/${comp_name}`, { method: "GET" })
         const events = await result.json();
         return events
     } catch (error) {
@@ -242,7 +240,7 @@ async function getEvents(comp_name) {
 //Getter for the scores data
 async function getScores(event_name, comp_name) {
     try {
-        const result = await fetch(`http://localhost:8081/scores/competition/${comp_name}/event/${event_name}`, { method: "GET" })
+        const result = await fetch(`http://leaderboard-project.xyz/scores/competition/${comp_name}/event/${event_name}`, { method: "GET" })
         const scores = await result.json();
         return scores
     } catch (error) {
